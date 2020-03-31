@@ -1,0 +1,57 @@
+FUNCTION_BLOCK Congestion
+
+	VAR_INPUT
+		Occupancy_Level : REAL; (* RANGE(0 .. 100) *)
+		Avg_Traffic_Speed : REAL; (* RANGE(0 .. 200) *)
+	END_VAR
+
+	VAR_OUTPUT 
+		Congestion_Value : REAL; (*RANGE (0 .. 100)*)
+	END_VAR
+
+	FUZZIFY Occupancy_Level
+		TERM Minimal := (0,0) (0,1) (15,0) ;
+		TERM Low := (10,0) (25,1) (35,0);
+		TERM Medium := (30,0) (45,1) (60,0);
+		TERM High := (50,0) (63,1) (78,0);
+		TERM Critical:= (70,0) (100,1) (100,0);
+	END_FUZZIFY
+
+	FUZZIFY Avg_Traffic_Speed
+		TERM Low := (0,0) (15,1) (33,0);
+		TERM Medium := (25,0) (40,1) (60,0);
+		TERM High := (50,0) (80,1) (200,0);
+	END_FUZZIFY
+
+	DEFUZZIFY Congestion_Value
+		TERM Negligable :=0;
+		TERM Low := 25;
+		TERM Med := 50;
+		TERM High := 75;
+		TERM Crit := 100;
+		ACCU:MAX;
+		METHOD: COGS;(*MoM;*)
+		DEFAULT := 0; 
+	END_DEFUZZIFY
+
+	RULEBLOCK congest
+		AND:MIN;
+		(*ACCU:MAX;*)
+		RULE 0: IF (Occupancy_Level IS Minimal) AND (Avg_Traffic_Speed IS High) THEN (Congestion_Value IS Negligable);
+		RULE 1: IF (Occupancy_Level IS Minimal) AND (Avg_Traffic_Speed IS Medium) THEN (Congestion_Value IS Negligable);
+		RULE 2: IF (Occupancy_Level IS Minimal) AND (Avg_Traffic_Speed IS Low) THEN (Congestion_Value IS Low);
+		RULE 3: IF (Occupancy_Level IS Low) AND (Avg_Traffic_Speed IS High) THEN (Congestion_Value IS Negligable);
+		RULE 4: IF (Occupancy_Level IS Low) AND (Avg_Traffic_Speed IS Medium) THEN (Congestion_Value IS Low);
+		RULE 5: IF (Occupancy_Level IS Low) AND (Avg_Traffic_Speed IS Low) THEN (Congestion_Value IS Low);
+		RULE 6: IF (Occupancy_Level IS Medium) AND (Avg_Traffic_Speed IS High) THEN (Congestion_Value IS Low);
+		RULE 7: IF (Occupancy_Level IS Medium) AND (Avg_Traffic_Speed IS Medium) THEN (Congestion_Value IS Med);
+		RULE 8: IF (Occupancy_Level IS Medium) AND (Avg_Traffic_Speed IS Low) THEN (Congestion_Value IS Med);
+		RULE 9: IF (Occupancy_Level IS High) AND (Avg_Traffic_Speed IS High) THEN (Congestion_Value IS Med);
+		RULE 10: IF (Occupancy_Level IS High) AND (Avg_Traffic_Speed IS Medium) THEN (Congestion_Value IS High);
+		RULE 11: IF (Occupancy_Level IS High) AND (Avg_Traffic_Speed IS Low) THEN (Congestion_Value IS High);
+		RULE 12: IF (Occupancy_Level IS Critical) AND (Avg_Traffic_Speed IS High) THEN (Congestion_Value IS High);
+		RULE 13: IF (Occupancy_Level IS Critical) AND (Avg_Traffic_Speed IS Medium) THEN (Congestion_Value IS Crit);
+		RULE 14: IF (Occupancy_Level IS Critical) AND (Avg_Traffic_Speed IS Low) THEN (Congestion_Value IS Crit);
+	END_RULEBLOCK
+ 
+END_FUNCTION_BLOCK
