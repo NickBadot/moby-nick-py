@@ -10,12 +10,12 @@ DECK_OF_MUTATIONS_DESCR = "Many moons ago the Order of Biomancers posited that e
               "Only some of the cards have known effects, the others you must find out...."
 
 DECK_OF_MUTATIONS_CARDS = {
-    "Thorax": "Your torso becomes covered in a chitinous exoskeleton, you gain 14 AC as natural armour but lose"
+    "*Thorax": "Your torso becomes covered in a chitinous exoskeleton, you gain 14 AC as natural armour but lose"
               " 2d10 from your maximum hit point",
-    "Lungs": "You permanently gain the ability to breathe underwater and a 10ft swim speed. "
+    "*Lungs": "You permanently gain the ability to breathe underwater and a 10ft swim speed. "
              "However it becomes more difficult to breathe on land. If you use the dash action "
              "in combat you will become winded and have disadvantage on attacks and saving throws for your next turn",
-    "Ungulate": "Your legs grow in size and change in shape to be more gazelle-like, you also grow hooves "
+    "*Ungulate": "Your legs grow in size and change in shape to be more gazelle-like, you also grow hooves "
                 "on your feet. You gain an additional 5ft to your movement speed but it comes at the cost of"
                 " balance. You now have disadvantage on any saves for an effect that would make you go prone"
                 " such as the Earth Tremor spell",
