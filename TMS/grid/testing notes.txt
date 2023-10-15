@@ -1,0 +1,9 @@
+TESTING NOTES:
+
+ESRGRID:
+Sending an Ambulance on a fixed route (low traffic density) without setting traffic lights took 152 seconds.
+With traffic light changes took 79 seconds.
+79	152
+162	194
+35	70
+224 278

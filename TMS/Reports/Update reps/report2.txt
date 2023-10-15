@@ -1,0 +1,25 @@
+REPORT 2:
+
+Acheived:
+-sendEmergencyVehicle(v,c) function which takes a vehID and an ID number to instantiate the ambulance, it sends an emergency vehicle to the location of the crashed
+vehicle
+- have a loop which detects stalled vehicles by checking their "wait time", there is one major issue with this however since vehicles stalled behind a crash will have
+a similar wait time and be incorrectly classified as crashes. For the moment te model only deals with one crash
+- as of 17/10 this has been tested on a 10*10 grid successfully (i.e. the ambulance enters at a random point and instanty reroutes to crash location).
+- getNextEdge function(v) determines edge and route of a vehicle and returns the next edge 
+- getNextLight(v) returns the next light to be encountered by v
+- drawn ROUGH flowchart
+
+
+Observations:
+-Time of each simulation step = 1s
+-Distance is (I think) in metres, distance function SHOULD be okay
+- Some features (like ambulancecount) suport the use of multiple ambulances, but at the oment only one is being considered for simplicity. See the crash detection
+section in accomplishmnets
+-traci.vehicle.getRoadID(ambulanceID) in traci.vehicle.getRoute(ambulanceID) has to be used to avoid trying to get next light from a junction
+
+
+Next Step: 
+-find estimated time to get to next light
+-find duration of tl
+-find difference between "phase" and "duration" etc

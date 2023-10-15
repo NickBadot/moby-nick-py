@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+	<input>
+        <net-file value="ottawa.net.xml"/>
+        <route-files value="rottawa.rou.xml"/>
+    </input>
+
+    <time>
+        <begin value="0"/>
+    </time>
+
+</configuration>

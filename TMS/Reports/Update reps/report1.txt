@@ -1,0 +1,45 @@
+REPORT 1:
+
+Steps taken so far:
+- Built a simple test network and simulation manually to understand SUMO
+- Smulated a crash on said network
+- Generated a 10*10 grid with the Netgenerate method
+- Imported OSM maps of Downtown Ottawa and lower Manhattan (approx 17th St to bottom of CP)
+- Wrote and tested ambulancetrack.py:
+	-reroutes ambulance to crash site (manually not dynamically)
+	-prints edge and pos of ambulance every 10 steps
+
+
+Observations:
+Ottawa
+-Randomly generted traffic on Ottawa map has big problem, all traffic bottlenecks across the same intersection of three streets I suspect there is 
+an import problem in which many connections are not maintained. Only option used was --try-join-tls
+
+NYC
+-1st nyc map built with no options, nycmap1.net built with options listed in "cmd line options to remember", nyymap2.net built with all options except --try-tls-join 
+in attempt to get rid of warnings (unsuccessful). 
+-Steets go EW , in general even streets are one way eastboud and odd are westbound, but several exceptions. Similarly aves go NS
+
+
+
+														***
+cmd line options to remember:
+
+Netconvert from OSM
+--guess-ramps 
+--remove-edges.by-vclass 
+hov,taxi,bus,delivery,transport,lightrail (or tram),cityrail (or rail_urban),rail_slow (or rail),rail_fast (or rail_electric),motorcycle,bicycle,pedestrian 
+--remove-geometry --remove-isolated --try-join-tls --verbose 
+
+														****
+**Issues**
+Warning :
+could not bulid program '0' for traffic light <NUMBER>
+Warning:
+The taffic light <NUMBER> does not control any links, it will not be built
+Are al tc properly defined?
+
+
+
+
+Note: have applied for mailing list but no response as of yet

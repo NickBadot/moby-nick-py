@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+	<input>
+        <net-file value="nycmap2.net.xml"/>
+        <route-files value="nycr3.rou.xml"/>
+    </input>
+
+    <time>
+        <begin value="0"/>
+    </time>
+
+</configuration>

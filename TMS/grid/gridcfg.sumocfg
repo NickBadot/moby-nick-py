@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+	<input>
+        <net-file value="grid10.net.xml"/>
+        <route-files value="2grid.rou.xml"/>
+    </input>s
+
+    <time>
+        <begin value="0"/>
+    </time>
+
+</configuration>
